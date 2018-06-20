@@ -14,8 +14,9 @@ class CartsController < ApplicationController
     if @cart.nil?
       @cart = Cart.new
       @cart.customer = current_customer
-      current_customer.cart = @cart
+      @cart.save
     end
+    @delivery_info = DeliveryInfo.new
   end
 
   # GET /carts/new

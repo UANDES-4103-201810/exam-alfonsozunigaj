@@ -1,8 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :customer
   has_one :delivery_info
-  has_many :pizza_in_orders
-  has_many :pizza, through: :pizza_in_orders
+  has_many :pizzas
   validates :payment, presence: true
-  validates :pizza, length: { minimum: 1 }
+  validates :pizzas, length: { minimum: 1 }
 end

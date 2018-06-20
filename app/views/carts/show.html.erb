@@ -10,6 +10,7 @@
   </thead>
 
   <tbody>
+  <% total = 0 %>
   <% @cart.pizzas.each do |pizza| %>
     <tr>
       <td><%= pizza.recipe.name %></td>
@@ -19,8 +20,41 @@
         <td>No</td>
       <% end %>
       <td>$ <%= pizza.crust.price + pizza.recipe.price %></td>
+      <% total += pizza.crust.price + pizza.recipe.price %>
     </tr>
   <% end %>
   </tbody>
+  <tr>
+    <td>Total:</td>
+    <td></td>
+    <td>$ <%= total %></td>
+  </tr>
 </table>
+
+<h2>Payment and Delivery</h2>
+<%= form_for @delivery_info do |form| %>
+  <div class="field">
+    <%= form.label :customer_id %>
+    <%= form.text_field :customer_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address1 %>
+    <%= form.text_field :address1 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :address2 %>
+    <%= form.text_field :address2 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phone %>
+    <%= form.number_field :phone %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
 

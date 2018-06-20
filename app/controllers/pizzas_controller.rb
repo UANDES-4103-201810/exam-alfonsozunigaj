@@ -28,7 +28,7 @@ class PizzasController < ApplicationController
     if @cart.nil?
       @cart = Cart.new
       @cart.customer = current_customer
-      current_customer.cart = @cart
+      @cart.save
     end
     @pizza = Pizza.new(recipe_id: params[:recipe_id], crust_id: params[:crust_id])
     respond_to do |format|
