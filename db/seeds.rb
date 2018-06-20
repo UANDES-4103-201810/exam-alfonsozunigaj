@@ -23,8 +23,7 @@ ingredients = Ingredient.create([{ name: 'Mozzarella' }, #1
                                  { name: 'Beef' },#15
                                  { name: 'Sausage' } ])#16
 
-crusts = Crust.create([{ thin: true, price: 590 },
-                       { thin: false, price: 990 }])
+crusts = Crust.create([{ thin: true, price: 590 }, { thin: false, price: 990 }])
 
 recipes = Recipe.create([{ name: 'Peperoni', price: 10690, image: 'https://d3auwaok61spz6.cloudfront.net/content/OnlineOrderingImages/Menu/Items/Super_Pepperoni.jpg' },
                          { name: 'All Meats', price: 11490, image: 'https://d3auwaok61spz6.cloudfront.net/content/OnlineOrderingImages/Menu/Items/Todas_Las_Carnes_New.jpg' },

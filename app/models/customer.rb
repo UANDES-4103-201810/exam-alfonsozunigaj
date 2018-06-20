@@ -4,5 +4,6 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :orders
+  has_one :cart
   validates :name, presence: true
 end

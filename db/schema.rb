@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_20_161939) do
+ActiveRecord::Schema.define(version: 2018_06_20_170152) do
+
+  create_table "carts", force: :cascade do |t|
+    t.integer "customer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["customer_id"], name: "index_carts_on_customer_id"
+  end
 
   create_table "crusts", force: :cascade do |t|
     t.boolean "thin"
@@ -70,6 +77,15 @@ ActiveRecord::Schema.define(version: 2018_06_20_161939) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["customer_id"], name: "index_orders_on_customer_id"
+  end
+
+  create_table "pizza_carts", force: :cascade do |t|
+    t.integer "cart_id"
+    t.integer "pizza_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cart_id"], name: "index_pizza_carts_on_cart_id"
+    t.index ["pizza_id"], name: "index_pizza_carts_on_pizza_id"
   end
 
   create_table "pizza_in_orders", force: :cascade do |t|

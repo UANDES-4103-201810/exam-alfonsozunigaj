@@ -24,11 +24,18 @@ class PizzasController < ApplicationController
   # POST /pizzas
   # POST /pizzas.json
   def create
-    @pizza = Pizza.new(pizza_params)
-
+    @cart = Cart.find_by_customer_id(current_customer.id)
+    if @cart.nil?
+      @cart = Cart.new
+      @cart.customer = current_customer
+      current_customer.cart = @cart
+    end
+    @pizza = Pizza.new(recipe_id: params[:recipe_id], crust_id: params[:crust_id])
     respond_to do |format|
       if @pizza.save
-        format.html { redirect_to @pizza, notice: 'Pizza was successfully created.' }
+        @pizza_cart = PizzaCart.new(cart_id: @cart.id, pizza: @pizza)
+        @pizza_cart.save
+        format.html { redirect_to @cart, notice: 'Pizza was successfully created.' }
         format.json { render :show, status: :created, location: @pizza }
       else
         format.html { render :new }

@@ -1,0 +1,26 @@
+<h1><%= @cart.customer.name %>'s card</h1>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Pizza</th>
+    <th>Thin crust?</th>
+    <th>Price + crust</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @cart.pizzas.each do |pizza| %>
+    <tr>
+      <td><%= pizza.recipe.name %></td>
+      <% if pizza.crust.thin %>
+        <td>Yes</td>
+      <% else %>
+        <td>No</td>
+      <% end %>
+      <td>$ <%= pizza.crust.price + pizza.recipe.price %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

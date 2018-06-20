@@ -30,6 +30,9 @@
         <ul class="nav navbar-nav navbar-right">
           <% if customer_signed_in? %>
             <li class="nav-item">
+              <%= link_to '<i class="fas fa-shopping-cart"></i>'.html_safe, my_cart_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
               <%= link_to('Logout', destroy_customer_session_path, method: :delete, class: 'nav-link') %>
             </li>
           <% else %>
