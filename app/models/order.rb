@@ -4,4 +4,5 @@ class Order < ApplicationRecord
   has_many :pizza_in_orders
   has_many :pizza, through: :pizza_in_orders
   validates :payment, presence: true
+  validates :pizza, length: { minimum: 1 }
 end
